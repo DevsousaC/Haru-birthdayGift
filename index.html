@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Simbiose: Relatório #01</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Dancing+Script:wght@600&family=Courier+Prime&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="lock-screen" class="container lock-container">
+        <div class="flower-icon">🔒 🌿</div>
+        <h2>Acesso Restrito</h2>
+        <p class="lock-message">Amostra biológica em processo de maturação.</p>
+        
+        <div class="timer-box">
+            <p>Eclosão prevista em:</p>
+            <div id="countdown" class="timer-display">Calculando...</div>
+        </div>
+
+        <p class="quote-small">"A paciência é amarga, mas seu fruto é doce." <br> (Rousseau)</p>
+    </div>
+
+    <div id="main-content" class="container content-container hidden">
+        <div class="flower-icon">🦋 🌸 🦋</div>
+        
+        <h1>Relatório de Campo #01</h1>
+        <p class="subtitle">Assunto: A Descoberta da Minha "Kindred Spirit"</p>
+
+        <div class="photo-frame">
+            <img src="./img/nós.jpeg" alt="Nós dois"> 
+            <p class="handwritten">Nossa primeira amostra de felicidade.</p>
+        </div>
+
+        <div class="bio-data">
+            <strong>Espécie Rara:</strong> <i>Namoradus Perfeitus</i><br>
+            <strong>Habitat Atual:</strong> Laboratório de Bio & Heatopia<br>
+            <strong>Status:</strong> Química 100% Compatível
+        </div>
+
+        <div class="text-body">
+            <p>
+                Feliz Aniversário! Talvez seja cedo cientificamente falando (1 mês), 
+                mas meus dados preliminares indicam que encontrar você foi a maior descoberta da minha vida.
+            </p>
+            <p>
+                Assim como a Anne diz: "Verdadeiros amigos estão sempre juntos em espírito."
+            </p>
+        </div>
+
+        <div id="phase-birthday">
+            <button class="btn-love" id="btn-action">
+                Renovar Pesquisa por +1 Mês?
+            </button>
+        </div>
+
+        <div id="phase-distance" class="hidden distance-box">
+            <hr style="margin: 30px 0; border: 0; border-top: 1px dashed #ccc;">
+            
+            <h2 style="font-family: 'Dancing Script'; color: #c5a059; text-align: center;">
+                Fase 2: Estudo Remoto (Maringá)
+            </h2>
+            
+            <p style="text-align: center; font-size: 1.1rem;">
+                "A distância é apenas um teste para ver até onde o amor pode viajar."
+            </p>
+
+            <div class="timer-box" style="border-color: #c5a059; background: #fffbf0;">
+                <p>Contagem regressiva para a próxima coleta de dados presencial:</p>
+                <div id="reunion-timer" class="timer-display" style="color: #c5a059;">
+                    Calculando...
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 20px;">
+                <span style="font-size: 2rem;">💌</span><br>
+                Estou cuidando do seu habitat aqui enquanto você conquista o mundo aí.
+            </p>
+        </div>
+        
+        <div class="flower-icon" style="margin-top: 30px;">🌿</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

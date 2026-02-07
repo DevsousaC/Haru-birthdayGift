@@ -30,15 +30,14 @@ function updateSystem() {
     }
 
     // é dia 14 ou depois. Libera o conteúdo!
-    unlockContent();
+    // unlockContent();
 
     // Depois do dia 28/02
     if (now >= departureDate) {
         // Mostra a seção de distância
-        phaseDistance.classList.remove('hidden');
+        // phaseDistance.classList.remove('hidden');
 
-        phaseBirthday.style.display = 'none';
-        console.log(phaseBirthday)
+        // phaseBirthday.style.display = 'none';
 
         // Atualiza o contador da saudade (Reencontro)
         const distanceToReunion = reunionDate - now;

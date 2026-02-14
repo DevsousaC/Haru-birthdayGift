@@ -19,11 +19,18 @@ const reunionTimerElement = document.getElementById('reunion-timer');
 const btnAction = document.getElementById('btn-action');
 const modal = document.getElementById('modal-renewal');
 const closeBtn = document.getElementById('close-modal');
+const lockMessage = document.getElementById('lock-message');
+const timerMessage = document.getElementById('lock-screen_timer-message');
+const quoteMessage = document.getElementById('quote-message');
+
+var click = false;
 
 function updateSystem() {
     const now = new Date().getTime(); // - Timer pré aniversario
     // const now = new Date(2026, 1, 14, 4, 36, 0).getTime(); // - Aniversario
     // const now = new Date(2026, 2, 3).getTime(); // Pós partida
+
+    
 
     // Antes do dia 14/02
     if (now < birthdayDate) {
@@ -34,6 +41,8 @@ function updateSystem() {
 
     closeBtn.addEventListener('click', () => {
         modal.classList.add('hidden'); // Devolve a classe que esconde
+        lockContent();
+        click = true
     });
 
 
@@ -47,6 +56,8 @@ function updateSystem() {
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
             modal.classList.add('hidden');
+            lockContent();
+            click = true
         }
     });
 
@@ -54,7 +65,7 @@ function updateSystem() {
     unlockContent();
 
     // Depois do dia 28/02
-    if (now >= departureDate) {
+    if (now >= departureDate && click == false) {
         // Mostra a seção de distância
         phaseDistance.classList.remove('hidden');
 
@@ -72,8 +83,19 @@ function updateSystem() {
 }
 
 function unlockContent() {
-    lockScreen.style.display = 'none';
-    mainContent.classList.remove('hidden');
+    console.log(click)
+    if(click == false) {
+        lockScreen.style.display = 'none';
+        mainContent.classList.remove('hidden');
+    }
+}
+
+function lockContent() {
+    lockScreen.style.display = 'block';
+    mainContent.classList.add('hidden');
+    lockMessage.textContent = "Amostra biológica em processo de evolução.";
+    timerMessage.textContent = "Evolução completa em:";
+    quoteMessage.textContent = `"Você é meu lugar favorito no mundo"`;
 }
 
 // Função genérica para formatar qualquer timer

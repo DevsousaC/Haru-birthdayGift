@@ -16,6 +16,9 @@ const countdownElement = document.getElementById('countdown');
 const phaseBirthday = document.getElementById('phase-birthday');
 const phaseDistance = document.getElementById('phase-distance');
 const reunionTimerElement = document.getElementById('reunion-timer');
+const btnAction = document.getElementById('btn-action');
+const modal = document.getElementById('modal-renewal');
+const closeBtn = document.getElementById('close-modal');
 
 function updateSystem() {
     const now = new Date().getTime(); // - Timer pré aniversario
@@ -28,6 +31,24 @@ function updateSystem() {
         updateTimerDisplay(countdownElement, distance);
         return; 
     }
+
+    closeBtn.addEventListener('click', () => {
+        modal.classList.add('hidden'); // Devolve a classe que esconde
+    });
+
+
+    btnAction.addEventListener('click', () => {
+        modal.classList.remove('hidden'); // Remove a classe que esconde
+        
+        // Efeito extra: Disparar confetes ou bolhas extras aqui seria incrível
+        // Mas por enquanto, apenas abrir já é o suficiente.
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.add('hidden');
+        }
+    });
 
     // é dia 14 ou depois. Libera o conteúdo!
     unlockContent();

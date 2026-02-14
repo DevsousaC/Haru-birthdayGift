@@ -15,6 +15,124 @@
     box-sizing: border-box;
 }
 
+/* --- ESTILOS DO MODAL --- */
+
+/* Fundo Escuro e Desfocado */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 50, 60, 0.8); /* Azul profundo */
+    backdrop-filter: blur(5px); /* Desfoque chique */
+    z-index: 9999; /* Fica acima de tudo, inclusive das bolhas */
+    
+    /* Centralização Flexbox */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Animação suave ao aparecer */
+    transition: opacity 0.3s ease;
+}
+
+/* O Papel/Cartão do Modal */
+.modal-paper {
+    background: #fff;
+    background: linear-gradient(135deg, #ffffff 80%, #e0f7fa 100%);
+    width: 90%;
+    max-width: 450px;
+    padding: 40px 20px;
+    border-radius: 20px;
+    text-align: center;
+    border: 2px solid var(--accent-green); /* Borda Ciano */
+    box-shadow: 0 0 50px rgba(0, 188, 212, 0.3); /* Brilho externo */
+    position: relative;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito de pulo ao abrir */
+}
+
+/* Títulos do Modal */
+.modal-paper h2 {
+    font-family: var(--font-title);
+    color: var(--accent-green);
+    font-size: 2.5rem;
+    margin: 20px 0 10px 0;
+}
+
+.subtitle-modal {
+    font-family: var(--font-main);
+    font-size: 1.2rem;
+    color: var(--text-ink);
+    line-height: 1.6;
+}
+
+.highlight-gold {
+    color: var(--accent-gold); /* Coral */
+    font-weight: bold;
+}
+
+/* Botão de Fechar */
+.close-btn {
+    position: absolute;
+    top: 15px; right: 20px;
+    font-size: 2rem;
+    color: #aaa;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.close-btn:hover { color: var(--accent-gold); }
+
+/* --- O CORAÇÃO PULSANTE (CSS PURO) --- */
+.heart-container {
+    position: relative;
+    height: 80px;
+    width: 80px;
+    margin: 0 auto; /* Centraliza */
+}
+
+.heart-shape {
+    background-color: var(--accent-gold); /* Coral */
+    display: inline-block;
+    height: 50px;
+    margin: 0 10px;
+    position: relative;
+    top: 10px;
+    transform: rotate(-45deg);
+    width: 50px;
+    animation: heartbeat 1.2s infinite;
+}
+
+.heart-shape:before,
+.heart-shape:after {
+    content: "";
+    background-color: var(--accent-gold); /* Coral */
+    border-radius: 50%;
+    height: 50px;
+    position: absolute;
+    width: 50px;
+}
+
+.heart-shape:before { top: -25px; left: 0; }
+.heart-shape:after { left: 25px; top: 0; }
+
+/* Animações */
+@keyframes heartbeat {
+    0% { transform: scale(1) rotate(-45deg); }
+    10% { transform: scale(1.2) rotate(-45deg); } /* Batida forte */
+    20% { transform: scale(1) rotate(-45deg); }
+    30% { transform: scale(1.2) rotate(-45deg); } /* Batida eco */
+    50% { transform: scale(1) rotate(-45deg); }
+    100% { transform: scale(1) rotate(-45deg); }
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.hidden {
+    display: none !important;
+}
+
 body {
     /* Gradiente que simula a profundidade do mar */
     background: linear-gradient(180deg, #e0f7fa 0%, #80deea 100%);
@@ -70,10 +188,6 @@ body {
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.6);
     position: relative;
-}
-
-.hidden {
-    display: none;
 }
 
 /* --- Estilos da Tela de Bloqueio --- */

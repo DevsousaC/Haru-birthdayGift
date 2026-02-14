@@ -1,8 +1,11 @@
 :root {
-    --bg-paper: #fdf6e3;    /* Cor de papel envelhecido */
-    --text-ink: #2c3e50;    /* Azul escuro quase preto (tinta de caneta) */
-    --accent-green: #556b2f; /* Verde musgo (Biologia) */
-    --accent-gold: #c5a059;
+    /* Paleta Marinha: Substituindo os tons de terra por Oceano */
+    --bg-paper: #e0f7fa;        /* Azul Água Clara (Superfície) */
+    --text-ink: #004d40;        /* Azul Petróleo Profundo (Legibilidade) */
+    --accent-green: #00bcd4;    /* Ciano/Turquesa (Cor principal) */
+    --accent-gold: #ff7043;     /* Coral Vibrante (Para contraste/destaque) */
+    
+    /* Fontes mantidas */
     --font-main: 'Cormorant Garamond', serif;
     --font-title: 'Dancing Script', cursive;
     --font-tech: 'Courier Prime', monospace;
@@ -13,7 +16,8 @@
 }
 
 body {
-    background-color: var(--bg-paper);
+    /* Gradiente que simula a profundidade do mar */
+    background: linear-gradient(180deg, #e0f7fa 0%, #80deea 100%);
     color: var(--text-ink);
     font-family: var(--font-main);
     margin: 0;
@@ -22,23 +26,52 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: radial-gradient(#556b2f 0.5px, transparent 0.5px);
-    background-size: 24px 24px;
+    
+    
+}
+
+.ocean-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: -1; overflow: hidden;
+}
+
+.bubble {
+    width: 20px; height: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    position: absolute; bottom: -50px;
+    animation: rise 15s infinite ease-in;
+}
+
+/* Tamanhos e posições variadas */
+.x1 { left: 10%; width: 15px; height: 15px; animation-duration: 12s; animation-delay: 0s; }
+.x2 { left: 30%; width: 30px; height: 30px; animation-duration: 18s; animation-delay: 2s; }
+.x3 { left: 55%; width: 10px; height: 10px; animation-duration: 8s; animation-delay: 4s; }
+.x4 { left: 70%; width: 25px; height: 25px; animation-duration: 14s; animation-delay: 1s; }
+.x5 { left: 90%; width: 20px; height: 20px; animation-duration: 10s; animation-delay: 3s; }
+
+@keyframes rise {
+    0% { bottom: -50px; transform: translateX(0); opacity: 0; }
+    50% { opacity: 0.8; }
+    100% { bottom: 120%; transform: translateX(-20px); opacity: 0; }
 }
 
 .container {
-    background: #fff;
+    /* Efeito "Glassmorphism" (Vidro/Água) */
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
     max-width: 600px;
     width: 90%;
     margin: 20px auto;
     padding: 40px 20px;
-    border-radius: 4px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    border: 1px solid #e0d0b0;
+    border-radius: 16px; /* Bordas mais arredondadas (fluidez) */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     position: relative;
 }
 
-/* Utilitário para esconder elementos */
 .hidden {
     display: none;
 }
@@ -47,33 +80,36 @@ body {
 .lock-container {
     text-align: center;
     border: 2px dashed var(--accent-green);
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
 }
 
 .timer-box {
     margin: 30px 0;
     padding: 20px;
-    background-color: #f4f9f4;
-    border-radius: 8px;
+    background-color: rgba(224, 247, 250, 0.6);
+    border-radius: 12px;
     border: 1px solid var(--accent-green);
+    box-shadow: inset 0 0 10px rgba(0, 188, 212, 0.1);
 }
 
 .timer-display {
     font-family: var(--font-tech);
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--accent-green);
+    color: var(--accent-green); /* Ciano escuro */
     margin-top: 10px;
+    text-shadow: 1px 1px 0 #fff;
 }
 
 .quote-small {
     font-size: 0.9rem;
     font-style: italic;
-    color: #666;
+    color: #455a64; /* Cinza azulado */
     margin-top: 30px;
 }
 
-/*  Estilos do Conteúdo Principal */
+/* Estilos do Conteúdo Principal */
 h1 {
     font-family: var(--font-title);
     color: var(--accent-green);
@@ -81,50 +117,64 @@ h1 {
     font-size: 2.8rem;
     margin-bottom: 5px;
     line-height: 1.2;
+    /* Sombra suave para parecer que o texto flutua */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .subtitle {
     text-align: center;
     font-style: italic;
-    color: #888;
+    color: #607d8b;
     margin-bottom: 25px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(0, 188, 212, 0.3);
     padding-bottom: 10px;
 }
 
 .photo-frame {
     background: #fff;
     padding: 12px 12px 30px 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    /* Sombra azulada em vez de preta */
+    box-shadow: 0 10px 20px rgba(0, 188, 212, 0.25);
     transform: rotate(-2deg);
     margin: 20px auto;
     width: 80%;
     text-align: center;
-    border: 1px solid #eee;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    
+    /* Animação suave de flutuar (como na água) */
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Nova animação para dar vida */
+@keyframes float {
+    0% { transform: rotate(-2deg) translateY(0px); }
+    50% { transform: rotate(-2deg) translateY(-8px); }
+    100% { transform: rotate(-2deg) translateY(0px); }
 }
 
 .photo-frame img {
     width: 100%;
     height: auto;
-    filter: sepia(15%) contrast(110%);
     display: block;
+    border-radius: 4px;
 }
 
 .handwritten {
     font-family: var(--font-title);
     font-size: 1.5rem;
-    color: #444;
+    color: var(--accent-green);
     margin-top: 10px;
 }
 
 .bio-data {
-    background-color: #fcfcfc;
+    background-color: rgba(255, 255, 255, 0.6);
     padding: 15px;
-    border-left: 4px solid var(--accent-green);
+    border-left: 4px solid var(--accent-gold); /* Coral */
     margin: 30px 0;
     font-size: 1.1rem;
     font-family: var(--font-tech);
-    color: #444;
+    color: var(--text-ink);
+    border-radius: 0 8px 8px 0;
 }
 
 .text-body {
@@ -132,28 +182,32 @@ h1 {
     line-height: 1.6;
     text-align: justify;
     margin-bottom: 30px;
+    color: #37474f;
 }
 
 .btn-love {
     display: block;
     width: 100%;
     padding: 16px;
-    background-color: var(--accent-green);
+    background-color: var(--accent-gold); /* Coral */
     color: white;
     font-family: var(--font-main);
     font-size: 1.3rem;
     font-weight: bold;
     border: none;
-    border-radius: 4px;
+    border-radius: 50px; /* Botão arredondado (seixo) */
     cursor: pointer;
     transition: all 0.3s ease;
     text-transform: uppercase;
     letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(255, 112, 67, 0.3);
+    animation: pulse-ocean 2s infinite;
 }
 
 .btn-love:hover {
-    background-color: #3e4f22;
+    background-color: #d84315;
     transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 112, 67, 0.5);
 }
 
 .flower-icon {
@@ -162,10 +216,14 @@ h1 {
     color: var(--accent-green);
 }
 
-/* Animação suave ao abrir */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-ocean {
+    0% { box-shadow: 0 0 0 0 rgba(255, 112, 67, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 112, 67, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 112, 67, 0); }
 }
 
 .fade-in {
@@ -184,4 +242,102 @@ h1 {
 @media (max-width: 400px) {
     h1 { font-size: 2.2rem; }
     .timer-display { font-size: 1.2rem; }
+}
+
+/* --- ESTILO DAS CÁPSULAS E CARTAS --- */
+
+.capsule-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.capsule-btn {
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--accent-green);
+    color: var(--text-ink);
+    font-family: var(--font-tech);
+    font-size: 0.9rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 188, 212, 0.1);
+}
+
+.capsule-btn:hover {
+    background-color: var(--accent-green);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
+    border-color: var(--accent-green);
+}
+
+/* Fundo Escuro (Overlay) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 50, 60, 0.75); /* Fundo azul petróleo escuro */
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
+}
+
+/* O Papel da Carta - Agora estilo Pérola/Concha */
+.modal-paper {
+    background: #fff;
+    /* Gradiente sutil perolado */
+    background: linear-gradient(135deg, #ffffff 0%, #e0f7fa 100%);
+    width: 90%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 16px;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    border: 1px solid #b2ebf2;
+    animation: zoomIn 0.3s ease-out;
+    text-align: center;
+}
+
+.modal-paper h2 {
+    font-family: var(--font-title);
+    color: var(--accent-green);
+    margin-top: 0;
+    font-size: 2rem;
+}
+
+.modal-paper p {
+    font-family: var(--font-main);
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--text-ink);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2rem;
+    color: #90a4ae;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: var(--accent-gold);
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 350px) {
+    .capsule-grid { grid-template-columns: 1fr; }
 }

@@ -1,7 +1,7 @@
 // CONFIGURAÇÕES DE DATAS
 
 // DATA 1: Aniversário (Libera o site) -> 14/02/2026
-const birthdayDate = new Date(2026, 1, 14, 0, 0, 0).getTime();
+const birthdayDate = new Date(2026, 1, 14, 3, 30, 0).getTime();
 
 // DATA 2: A Partida para Maringá -> 28/02/2026
 const departureDate = new Date(2026, 1, 28, 0, 0, 0).getTime();
@@ -18,8 +18,8 @@ const phaseDistance = document.getElementById('phase-distance');
 const reunionTimerElement = document.getElementById('reunion-timer');
 
 function updateSystem() {
-    const now = new Date().getTime(); // - Timer pré aniversario
-    // const now = new Date(2026, 1, 14).getTime(); // - Aniversario
+    // const now = new Date().getTime(); // - Timer pré aniversario
+     const now = new Date(2026, 1, 14, 4, 36, 0).getTime(); // - Aniversario
     // const now = new Date(2026, 2, 3).getTime(); // Pós partida
 
     // Antes do dia 14/02
@@ -30,14 +30,14 @@ function updateSystem() {
     }
 
     // é dia 14 ou depois. Libera o conteúdo!
-    // unlockContent();
+    unlockContent();
 
     // Depois do dia 28/02
     if (now >= departureDate) {
         // Mostra a seção de distância
-        // phaseDistance.classList.remove('hidden');
+        phaseDistance.classList.remove('hidden');
 
-        // phaseBirthday.style.display = 'none';
+        phaseBirthday.style.display = 'none';
 
         // Atualiza o contador da saudade (Reencontro)
         const distanceToReunion = reunionDate - now;
@@ -67,6 +67,34 @@ function updateTimerDisplay(element, distance) {
         ${minutes.toString().padStart(2, '0')}m ${seconds.toString().padStart(2, '0')}s
     `;
 }
+
+// --- LÓGICA DAS CÁPSULAS (MODAIS) ---
+
+function openLetter(letterId) {
+    const letter = document.getElementById(letterId);
+    if (letter) {
+        letter.classList.remove('hidden');
+        letter.style.display = 'flex'; // Garante que use Flexbox para centralizar
+    }
+}
+
+function closeLetter(letterId) {
+    const letter = document.getElementById(letterId);
+    if (letter) {
+        letter.classList.add('hidden');
+        letter.style.display = 'none'; // Esconde de novo
+    }
+}
+
+// Fecha o modal se apertar ESC no teclado (UX Pro)
+document.addEventListener('keydown', (e) => {
+    if (e.key === "Escape") {
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            modal.classList.add('hidden');
+            modal.style.display = 'none';
+        });
+    }
+});
 
 // Atualização a cada segundo
 setInterval(updateSystem, 1000);

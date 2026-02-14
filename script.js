@@ -18,8 +18,8 @@ const phaseDistance = document.getElementById('phase-distance');
 const reunionTimerElement = document.getElementById('reunion-timer');
 
 function updateSystem() {
-    // const now = new Date().getTime(); // - Timer pré aniversario
-     const now = new Date(2026, 1, 14, 4, 36, 0).getTime(); // - Aniversario
+    const now = new Date().getTime(); // - Timer pré aniversario
+    // const now = new Date(2026, 1, 14, 4, 36, 0).getTime(); // - Aniversario
     // const now = new Date(2026, 2, 3).getTime(); // Pós partida
 
     // Antes do dia 14/02
